@@ -10,11 +10,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/", name="main")
+     * @Route("/", name="home")
      */
     public function index(): Response
     {
-        return new Response('<h1>Welcome freeCodeCamp!</h1>');
+        return $this->render('home/index.html.twig');
     }
 
     /**
@@ -26,6 +26,8 @@ class MainController extends AbstractController
      */
     public function custom(Request $request, string $name): Response
     {
-        return new Response("<h1>Welcome {$name}!</h1>");
+        return $this->render('home/custom.html.twig', [
+            'name' => $name
+        ]);
     }
 }
